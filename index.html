@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>JWT</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="assets/jwt_logo.png"></section>
+				<section>
+					<pre><code data-trim data-noescape>
+						header.payload.signature	
+					</code></pre>
+				</section>
+				<section 
+				data-background-image="assets/4e62302d99ae5382cfa1842a7d8e02da.png" 
+				data-background-size="800px">
+				</section>
+				<section>
+					<section>Step 1. Create the HEADER</section>
+					<section>
+						<pre><code data-trim data-noescape>
+							{
+								"typ": "JWT",
+								"alg": "HS256"
+							}	
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>Step 2. Create the PAYLOAD</section>
+					<section>
+						<pre><code data-trim data-noescape>
+							{
+								"userId": "b08f86af-35da-48f2-8fab-cef3904660bd"
+							}
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>Step 3. Create the SIGNATURE</section>
+					<section>
+						<pre><code data-trim data-noescape>
+							algorithmdata = base64urlEncode( header ) + “.” + 
+							base64urlEncode( payload )hashedData = 
+							hash( data, secret )signature = 
+							base64urlEncode( hashedData )
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim data-noescape>
+							// header  
+							eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+							// payload  
+							eyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NjYwYmQifQ
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim data-noescape>
+							// signature-xN_h82PHVTCMA9vdoHrcZxH-x5mb11y1537t3rGzcM
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					Step 4. Put All Three JWT Components Together
+				</section>
+				<section>
+					Step 5. Verifying the JWT
+				</section>
+				<section>Thanks for watching</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
